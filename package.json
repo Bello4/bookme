@@ -6,7 +6,7 @@
   "scripts": {
     "start": "server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false && npm install --prefix front && npm run build --prefix front"
   },
   "author": "ahmedbello",
   "license": "ISC",
@@ -36,8 +36,5 @@
     "stripe": "^8.184.0",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
-  },
-  "engines": {
-    "node": ">=14"
   }
 }
