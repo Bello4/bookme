@@ -2,7 +2,9 @@
 
 > Complete HOTEL BOOKING SERVICE WEB APP site built with Node.js, React, Redux, Express, MongoDB
 
- Name: [MERN Stack Full Hotel Booking Web App Site - Using React, Redux, Node.j]
+ View about project on:(https://bookmeservice.herokuapp.com)
+login admin portal using: deo@gmail.com
+password: test1234
 
 
 ### Env Variables
