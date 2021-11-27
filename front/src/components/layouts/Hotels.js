@@ -22,8 +22,8 @@ const Hotels = ({ match }) => {
     const [category, setCategory] = useState('')
 
     const categories = [
-        'Shortlet',
-        'Hotel'
+        'shortlet',
+        'hotel'
     ]
 
     const dispatch = useDispatch();
