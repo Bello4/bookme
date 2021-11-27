@@ -41,9 +41,6 @@ const Header = () => {
     const setSearchHandler = () => {
         setSearchBar(!searchBar)
     }
-    const setNavHandler = () => {
-        setNavbar(!navbar)
-    }
     return (
         <Fragment>
             <div className="header bottomSpace">
@@ -56,18 +53,7 @@ const Header = () => {
                 <div className="fas fa-search" id="search-btn" onClick={setSearchHandler}></div>
                 <div className="fas fa-moon" id="theme-btn" onClick={moonHandler}></div>
                 <div className="fas fa-user" id="login-btn" onClick={setLoginHandler}></div>
-                <div className="fas fa-bars" id="menu-btn" onClick={setNavHandler}></div>
             </div>
-
-            <nav className={navbar ? "navbar active" : "navbar"} >
-                <a href="#home">home</a>
-                <a href="#packages">packages</a>
-                <a href="#services">services</a>
-                <a href="#pricing">pricing</a>
-                <a href="#review">review</a>
-                <a href="#contact">contact</a>
-                <a href="#blogs">blogs</a>
-            </nav>
 
             <form action="" className={login ? "login-form active" : "login-form"} >
             {user ? (

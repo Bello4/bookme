@@ -43,7 +43,7 @@ const BookingForm = () => {
             <form action=""  onSubmit={submitHandler}>
 
                 <div className="inputBox">
-                    <span>plan</span>
+                    <span>select plan</span>
                     <select className="font-size" value={plan} onChange={(e) => setPlan(e.target.value)}>
                         <option>Select Plan</option>
                         <option>basicPlanPrice</option>

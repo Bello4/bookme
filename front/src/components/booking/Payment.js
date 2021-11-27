@@ -43,7 +43,7 @@ const Payment = ({ history }) => {
 
     if (bookHotel) {
         booking.arrival = bookHotel.arrival
-        booking.leavibookHotelng = bookHotel.leaving
+        booking.leaving = bookHotel.leaving
         booking.contact = bookHotel.contact
         booking.duration = bookHotel.duration
         booking.service = bookHotel.service
