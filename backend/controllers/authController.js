@@ -40,26 +40,49 @@ const signToken = id => {
   });
 };
 
-const createSendToken = (user, statusCode, res) => {
-  const token = signToken(user._id);
+// BEFORE DEPLOYMENT
+// const createSendToken = (user, statusCode, res) => {
+//   const token = signToken(user._id);
 
-  const cookieOptions = {
-      expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
-      secure: true
-  };
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-  res.cookie('jwt', token, cookieOptions);
+//   const cookieOptions = {
+//       expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+//       secure: true
+//   };
+//   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+//   res.cookie('jwt', token, cookieOptions);
 
-  //remove user from output
-  user.password = undefined;
+//   //remove user from output
+//   user.password = undefined;
 
-  res.status(statusCode).json({
-    status: 'success',
-    token,
-    user
-  });
-}
+//   res.status(statusCode).json({
+//     status: 'success',
+//     token,
+//     user
+//   });
+// }
 
+// AFTER DEPLOYMENT
+const createSendToken = (user, statusCode, req, res) => {
+    const token = signToken(user._id);
+   
+  
+    res.cookie('jwt', token, {
+      expires: new Date(
+        Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      ),
+      httpOnly: true,
+      secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
+    });
+  
+    // Remove password from output
+    user.password = undefined;
+  
+    res.status(statusCode).json({
+      status: 'success',
+      token,
+      user
+    });
+};
 
 // SIGNUP NEW USER CONTRLLER
 exports.signup = catchAsync(async (req, res, next) => {
@@ -84,10 +107,10 @@ exports.signup = catchAsync(async (req, res, next) => {
     })
     
     // SENDING WELCOME EMAIL TEMPLATE
-    const url = `${req.protocol}://${req.get('host')}/me`;
-    await new Email(newUser, url).sendWelcome();
-    //createSendToken(user, 201, res);
-    createSendToken(user, 201, req, res);
+    //const url = `${req.protocol}://${req.get('host')}/me`;
+    //await new Email(newUser, url).sendWelcome();
+    createSendToken(user, 201, res);
+    //createSendToken(user, 201, req, res);
     
 });
 
