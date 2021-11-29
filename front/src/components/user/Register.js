@@ -26,6 +26,7 @@ const Register = ({ history }) => {
 
         if (isAuthenticated) {
             history.push('/')
+            alert.success('signup successfully please check your mail')
         }
 
         if (error) {
@@ -46,7 +47,7 @@ const Register = ({ history }) => {
         formData.append('avatar', avatar);
 
         dispatch(register(formData))
-        alert.success('signup successfully please check your mail')
+        
     }
 
     const onChange = e => {
