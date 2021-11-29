@@ -25,6 +25,7 @@ const Register = ({ history }) => {
     useEffect(() => {
 
         if (isAuthenticated) {
+            alert.success('successfully please check your mail!')
             history.push('/')
         }
 
