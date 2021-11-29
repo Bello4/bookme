@@ -9,7 +9,7 @@ const Search = ({ history, searchBar  }) => {
     const searchHandler = (e) => {
         e.preventDefault()
 
-        if (keyword.toLowercase().trim()) {
+        if (keyword.trim().toLowercase()) {
             history.push(`/search/${keyword}`)
         } else {
            history.push('/')

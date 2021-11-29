@@ -96,9 +96,8 @@ const Hotels = ({ match }) => {
                                 {categories.map(category => (
                                   <li className="catig"
                                               key={category}
-                                              onClick={() => setCategory(category)
-                                              }>
-                                                {category}
+                                              onClick={() => setCategory(category)}>{category}
+                                                
                                   </li>
                                 ))}
                               </ul>
