@@ -93,10 +93,10 @@ exports.signup = catchAsync(async (req, res, next) => {
     })
     
     // SENDING WELCOME EMAIL TEMPLATE
-    //const url = `${req.protocol}://${req.get('host')}/me`;
-    //await new Email(newUser, url).sendWelcome();
-    createSendToken(user, 201, res);
-    //createSendToken(user, 201, req, res);
+    const url = `${req.protocol}://${req.get('host')}/`;
+    await new Email(user, url).sendWelcome();
+    //createSendToken(user, 201, res);
+    createSendToken(user, 201, req, res);
     
 });
 
