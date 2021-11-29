@@ -25,7 +25,6 @@ const Register = ({ history }) => {
     useEffect(() => {
 
         if (isAuthenticated) {
-            alert.success('successfully please check your mail!')
             history.push('/')
         }
 
@@ -47,6 +46,7 @@ const Register = ({ history }) => {
         formData.append('avatar', avatar);
 
         dispatch(register(formData))
+        alert.success('signup successfully please check your mail')
     }
 
     const onChange = e => {
