@@ -40,7 +40,7 @@ const signToken = id => {
   });
 };
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id);
 
   // BEFORE DEPLOYMENT
@@ -118,7 +118,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 3) If everything ok, send token to client
  // createSendToken(user, 200, res);
- createSendToken(user, 200, res);
+ createSendToken(user, 200, req, res);
  
 });
 
@@ -283,7 +283,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     // User.findByIdAndUpdate will not work as intended!!!
 
     // 4) log user in, send jwt
-    //createSendToken(user, 200, req, res);
-    createSendToken(user, 200, res);
+    createSendToken(user, 200, req, res);
+    //createSendToken(user, 200, res);
 
 });
