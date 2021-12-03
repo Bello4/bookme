@@ -20,12 +20,16 @@ const Register = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
-    const { isAuthenticated, error, loading } = useSelector(state => state.auth);
+    const { isAuthenticated, success, error, loading } = useSelector(state => state.auth);
 
     useEffect(() => {
 
         if (isAuthenticated) {
             history.push('/')
+            
+        }
+
+        if (success) {
             alert.success('signup successfully please check your mail')
         }
 
@@ -34,7 +38,7 @@ const Register = ({ history }) => {
             dispatch(clearErrors());
         }
 
-    }, [dispatch, alert, isAuthenticated, error, history])
+    }, [dispatch, alert, success, isAuthenticated, error, history])
 
     const submitHandler = (e) => {
         e.preventDefault();

@@ -18,6 +18,7 @@ import UpdatePassword from './components/user/UpdatePassword';
 import ForgotPassword from './components/user/ForgotPassword';
 import NewPassword from './components/user/NewPassword';
 
+
 //Admin
 import DashBoard from './components/admin/DashBoard';
 import HotelList from './components/admin/HotelList';
@@ -89,6 +90,7 @@ function App() {
       <ProtectedRoute path="/admin/bookings" isAdmin={true} component={BookingList} exact />
       <ProtectedRoute path="/admin/booking/:id" isAdmin={true} component={BookingDetails} exact />
       <ProtectedRoute path="/admin/reviews" isAdmin={true} component={HotelReviews} exact />
+      
 
       <ProtectedRoute path="/bookingform" component={Booking} exact />
       {stripeApiKey &&
