@@ -24,14 +24,11 @@ const Register = ({ history }) => {
 
     useEffect(() => {
 
-        if (isAuthenticated) {
+        if (isAuthenticated || success) {
             history.push('/')
-            
-        }
-
-        if (success) {
             alert.success('signup successfully please check your mail')
         }
+
 
         if (error) {
             alert.error(error);

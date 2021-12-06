@@ -9,12 +9,14 @@ const Search = ({ history, searchBar  }) => {
     const searchHandler = (e) => {
         e.preventDefault()
 
-        if (keyword.trim().toLowercase()) {
+        if (keyword.trim().filter().toLowercase()) {
             history.push(`/search/${keyword}`)
         } else {
            history.push('/')
         }
     }
+
+    //const findWord = keyword.filter(word => word.name.toLowercase().includes(searchFields.toLowercase()))
    
     return (
         <form onSubmit={searchHandler}  className={searchBar ? "search-form" : "search-form active"}>
